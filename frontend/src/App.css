@@ -1,0 +1,11 @@
+/* App-specific component css overrides */
+.app-shell-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 768px) {
+  .app-shell-grid {
+    grid-template-columns: 1fr;
+  }
+}

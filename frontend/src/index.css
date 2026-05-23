@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    background: #f8fafc;
+  }
+  body {
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: 'Manrope', system-ui, sans-serif;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    background-color: #0f172a;
+    color: #f8fafc;
+  }
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 6px;
+    border: 2px solid #f8fafc;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
+
+@layer components {
+  /* Focus rings */
+  .fr-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+
+  /* Pill */
+  .pill {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-medium rounded-full border;
+  }
+
+  /* Tiny pill (used inside tables for status) */
+  .pill-sm {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-md border;
+  }
+
+  /* Logo mark — geometric "F" */
+  .logo-mark {
+    @apply relative inline-flex items-center justify-center w-7 h-7 rounded-md bg-slate-900 text-white;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+  /* Dotted grid background for landing hero */
+  .dotted-grid {
+    background-image: radial-gradient(circle, rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Section divider */
+  .hairline {
+    border-top: 1px solid #e2e8f0;
+  }
+
+  /* App shell layout helpers */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors;
+  }
+  .nav-item-active {
+    @apply bg-slate-900 text-white hover:bg-slate-900 hover:text-white;
+  }
+  .nav-item-icon {
+    @apply w-4 h-4 shrink-0;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white border border-slate-200 rounded-lg;
+  }
+  .card-header {
+    @apply px-5 py-4 border-b border-slate-200 flex items-center justify-between;
+  }
+  .card-title {
+    @apply text-sm font-semibold text-slate-900;
+  }
+  .card-body {
+    @apply p-5;
+  }
+
+  /* Table */
+  .tbl {
+    @apply w-full text-sm;
+  }
+  .tbl thead th {
+    @apply text-left text-[11px] uppercase tracking-wider font-semibold text-slate-500 px-4 py-2.5 border-b border-slate-200 bg-slate-50/60;
+  }
+  .tbl tbody td {
+    @apply px-4 py-2.5 border-b border-slate-100 text-slate-700;
+  }
+  .tbl tbody tr:hover {
+    @apply bg-slate-50/60;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors fr-ring;
+  }
+  .btn-primary {
+    @apply btn bg-slate-900 text-white hover:bg-slate-800 px-3.5 py-2;
+  }
+  .btn-secondary {
+    @apply btn bg-white border border-slate-200 text-slate-900 hover:bg-slate-50 px-3.5 py-2;
+  }
+  .btn-ghost {
+    @apply btn text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-2.5 py-1.5;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 text-white hover:bg-rose-700 px-3.5 py-2;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  /* Inputs */
+  .inp {
+    @apply w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-sm placeholder:text-slate-400 fr-ring;
+  }
+
+  /* Stage chip (used in deals table + kanban) */
+  .stage-chip {
+    @apply inline-flex items-center px-2 py-0.5 text-[11px] font-semibold rounded-md border;
+  }
+
+  /* Avatar circle */
+  .avatar {
+    @apply inline-flex items-center justify-center w-7 h-7 rounded-full text-[11px] font-semibold text-white;
+  }
+
+  /* Mini KPI tile */
+  .kpi {
+    @apply card p-5 flex flex-col gap-2;
+  }
+  .kpi-label {
+    @apply text-xs uppercase tracking-wider text-slate-500 font-semibold;
+  }
+  .kpi-value {
+    @apply text-2xl md:text-3xl font-display font-medium text-slate-900 tracking-tight;
+  }
+  .kpi-delta-pos {
+    @apply text-xs text-emerald-700 font-medium;
+  }
+  .kpi-delta-neg {
+    @apply text-xs text-rose-700 font-medium;
+  }
+
+  /* Drawer overlay */
+  .drawer-overlay {
+    @apply fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40 animate-fadeIn;
+  }
+  .drawer-panel {
+    @apply fixed right-0 top-0 bottom-0 w-full sm:max-w-md md:max-w-lg bg-white z-50 shadow-2xl border-l border-slate-200 flex flex-col animate-slideUp;
+  }
+
+  /* Kanban */
+  .kanban-col {
+    @apply bg-slate-100/70 border border-slate-200 rounded-lg p-3 flex flex-col gap-3 min-w-[280px] w-[280px] shrink-0;
+  }
+  .kanban-card {
+    @apply bg-white border border-slate-200 rounded-md p-3 shadow-soft cursor-grab active:cursor-grabbing hover:border-slate-300 transition-colors;
+  }
+}
+
+/* Recharts overrides */
+.recharts-cartesian-axis-tick-value tspan {
+  fill: #64748b;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px;
+}
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #0f172a !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 12px !important;
+  color: white !important;
+}
+.recharts-default-tooltip .recharts-tooltip-label {
+  color: #cbd5e1 !important;
+  font-size: 12px !important;
+  margin-bottom: 4px !important;
+}
+.recharts-default-tooltip .recharts-tooltip-item {
+  color: white !important;
+  font-size: 13px !important;
+}
