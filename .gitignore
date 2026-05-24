@@ -1,7 +1,10 @@
 .env
-.env.*
 *.env
 credentials.json
 *.pem
 *.key
 .credentials
+venv/
+node_modules/
+.venv/
+__pycache__/

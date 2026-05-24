@@ -66,7 +66,7 @@ export default function AppShell() {
       </aside>
 
       {/* Main */}
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col h-screen overflow-hidden">
         {/* Top bar */}
         <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-6 gap-4" data-testid="app-topbar">
           <div className="flex items-center gap-3 flex-1 max-w-xl">

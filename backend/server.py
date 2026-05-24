@@ -41,7 +41,6 @@ from models import (
     DEFAULT_PIPELINE,
 )
 from automations import fire_event
-from seed import seed_all
 
 # --- Mongo ---
 MONGO_URL = os.environ["MONGO_URL"]
@@ -111,9 +110,6 @@ async def on_startup():
             {"email": admin_email},
             {"$set": {"password_hash": hash_password(admin_password)}},
         )
-
-    # Seed demo data
-    await seed_all(db)
 
 
 # === AUTH ROUTES ============================================================
